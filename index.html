@@ -3,223 +3,489 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Martina Hübler — Portafolio</title>
-  <meta name="description" content="Portafolio personal — Martina Hübler, Proyectos, habilidades y contacto.">
+  <title>Tu Nombre — Portafolio</title>
+  <meta name="description" content="Portafolio personal — Tu Nombre. Proyectos, habilidades y contacto.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Fuente: usar Google Fonts (si estás offline no rompe la página) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#ffffff;           /* fondo general */
-      --card:#f8f9fa;         /* tarjetas / secciones */
-      --muted:#5f6b73;        /* texto secundario */
-      --text:#1b1d1f;         /* texto principal */
-      --accent:#1b8e5f;       /* verde Irlanda */
-      --accent-light:#3db97e; /* variante más clara */
+      --bg:#071018;           /* fondo general */
+      --card:#0f1720;         /* tarjetas / secciones */
+      --muted:#9aa6b2;        /* texto secundario */
+      --accent:#caa8ff;       /* color acento (lila/dorado suave) */
+      --accent-2:#5bd6ff;     /* acento secundario (azul) */
+      --glass: rgba(255,255,255,0.03);
       --radius:14px;
       --maxw:1100px;
-      --shadow:0 8px 28px rgba(0,0,0,0.06);
     }
-
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
-      font-family:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.5;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(122,84,255,0.06), transparent 6%),
+                  radial-gradient(1000px 500px at 90% 90%, rgba(91,214,255,0.03), transparent 6%),
+                  var(--bg);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
       scroll-behavior:smooth;
     }
 
     /* NAV */
     .nav{
       position:fixed;
-      left:50%;transform:translateX(-50%);
-      top:18px;z-index:60;
+      left:50%;
+      transform:translateX(-50%);
+      top:18px;
+      z-index:60;
       width:min(96%, var(--maxw));
-      display:flex;justify-content:space-between;align-items:center;
-      padding:10px 18px;
-      background:rgba(255,255,255,0.85);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:10px 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       border-radius:999px;
-      backdrop-filter:blur(8px);
-      box-shadow:var(--shadow);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 6px 18px rgba(3,6,12,0.6);
     }
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;}
-    .logo{
+    .brand{
+      display:flex;align-items:center;gap:12px;
+      text-decoration:none;color:inherit;
+    }
+    .logo {
       width:44px;height:44px;border-radius:10px;
-      background:linear-gradient(135deg,var(--accent),var(--accent-light));
-      display:grid;place-items:center;font-weight:800;color:#fff;font-size:18px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:grid;place-items:center;font-weight:800;
+      color:#071018;font-size:18px;
+      box-shadow: 0 6px 22px rgba(78,56,131,0.25), inset 0 -6px 16px rgba(255,255,255,0.04);
     }
-    .menu{display:flex;gap:14px}
-    .menu a{
-      text-decoration:none;color:var(--muted);
-      padding:8px 12px;border-radius:10px;font-weight:600;font-size:14px;
-    }
-    .menu a:hover{color:var(--accent);background:rgba(27,142,95,0.08)}
+    .brand span{font-weight:700;letter-spacing:0.2px}
 
-    /* HERO */
+    .menu{
+      display:flex;gap:12px;align-items:center;
+    }
+    .menu a{
+      text-decoration:none;color:var(--muted);padding:8px 12px;border-radius:10px;font-weight:600;font-size:14px;
+    }
+    .menu a:hover{color:#fff;background:var(--glass)}
+
+    /* Hero */
     header.hero{
       padding:120px 20px 60px;
       display:flex;gap:32px;align-items:center;justify-content:center;
-      max-width:var(--maxw);margin:0 auto;
+      max-width:var(--maxw);margin:36px auto 0;
+    }
+    .hero-left{flex:1;min-width:260px}
+    .eyebadge{
+      display:inline-flex;align-items:center;gap:10px;background:linear-gradient(90deg,rgba(255,255,255,0.03),transparent);
+      padding:8px 12px;border-radius:999px;font-weight:600;color:var(--muted);font-size:13px;width:max-content;
+      box-shadow: 0 6px 18px rgba(2,4,8,0.6);
     }
     h1{
-      margin:16px 0 8px;
-      font-size:clamp(28px,5vw,44px);
-      color:var(--accent);
+      margin:18px 0 8px;font-size:clamp(28px,5vw,44px);line-height:1.03;
+      letter-spacing:-0.4px;
+      background:linear-gradient(90deg,#fff, #d6e4ff 60%); -webkit-background-clip:text; background-clip:text; color:transparent;
     }
-    p.lead{color:var(--muted);font-size:16px;max-width:52ch;margin-bottom:20px;}
+    p.lead{color:var(--muted);font-size:15px;margin:0 0 18px;max-width:52ch}
 
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
     .btn{
-      display:inline-flex;gap:8px;align-items:center;padding:10px 16px;
-      border-radius:12px;font-weight:700;text-decoration:none;
-      background:var(--accent);color:#fff;
-      box-shadow:0 4px 16px rgba(27,142,95,0.25);
+      display:inline-flex;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;
+      background:linear-gradient(180deg,var(--accent), #8f73ff);color:#071018;font-weight:700;text-decoration:none;
+      box-shadow: 0 10px 24px rgba(115,83,255,0.12), inset 0 -6px 14px rgba(255,255,255,0.06);
     }
-    .btn:hover{background:var(--accent-light)}
     .btn.secondary{
-      background:transparent;color:var(--accent);border:2px solid var(--accent);
+      background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.04);font-weight:600;
     }
-    .btn.secondary:hover{background:rgba(27,142,95,0.1)}
 
     .hero-right{
       width:360px;max-width:44%;
-      background:var(--card);
-      border-radius:20px;padding:18px;box-shadow:var(--shadow);
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:20px;padding:18px;box-shadow: 0 10px 40px rgba(3,6,12,0.7);
+      display:flex;flex-direction:column;gap:12px;
     }
+    .profile{
+      display:flex;gap:12px;align-items:center;
+    }
+    .avatar{
+      width:72px;height:72px;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:grid;place-items:center;font-weight:800;color:#071018;font-size:20px;
+    }
+    .meta{flex:1;text-align:left}
+    .meta h3{margin:0;font-size:16px}
+    .meta p{margin:2px 0 0;color:var(--muted);font-size:13px}
 
-    /* SECTIONS */
-    main{max-width:var(--maxw);margin:0 auto;padding:0 20px 80px;}
-    section.block{
-      background:var(--card);
-      padding:28px;border-radius:var(--radius);
-      margin:20px 0;box-shadow:var(--shadow);
-    }
+    /* Sections */
+    main{max-width:var(--maxw);margin:40px auto;padding:0 20px 80px;display:block}
+    section.block{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:28px;border-radius:var(--radius);margin:20px 0}
     section.headline{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    section.headline h2{margin:0;font-size:22px;color:var(--accent);}
+    section.headline h2{margin:0;font-size:20px}
     section.headline p.small{margin:0;color:var(--muted);font-size:13px}
 
-    /* Projects */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px;}
+    /* Projects grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
     .card{
-      background:#fff;
-      padding:14px;border-radius:12px;
-      box-shadow:var(--shadow);
-      transition:transform .25s ease;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.006));
+      padding:14px;border-radius:12px;box-shadow: 0 8px 24px rgba(2,6,12,0.6);
+      transition:transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
     }
-    .card:hover{transform:translateY(-6px)}
-    .card h3{margin:10px 0 6px;color:var(--text);}
-    .card p{margin:0;color:var(--muted);font-size:14px;}
-    .pill{
-      padding:8px 10px;border-radius:999px;background:rgba(27,142,95,0.08);
-      color:var(--accent);font-weight:600;font-size:13px;border:none;
-      cursor:pointer;
-    }
-    .pill:hover{background:rgba(27,142,95,0.15)}
+    .card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,6,12,0.75)}
+    .card h3{margin:8px 0 6px;font-size:16px}
+    .card p{margin:0;color:var(--muted);font-size:13px}
 
-    /* Skills */
-    .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-    .skills .pill{background:rgba(27,142,95,0.08)}
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .pill{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,0.02);font-weight:600;color:var(--muted);font-size:13px}
 
-    /* Timeline */
-    .timeline{display:flex;flex-direction:column;gap:12px;margin-top:12px}
-    .timeline .item{padding:12px;border-radius:12px;background:#fff;box-shadow:var(--shadow);}
-    .timeline small{color:var(--muted)}
+    /* Experience */
+    .timeline{display:flex;flex-direction:column;gap:12px}
+    .timeline .item{padding:12px;border-radius:12px;background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02)}
+    .timeline .item h4{margin:0 0 6px}
+    .timeline .item small{color:var(--muted)}
 
     /* Contact */
-    input,textarea{
-      width:100%;padding:10px;border-radius:10px;border:1px solid #ccc;
-      font-size:14px;font-family:inherit;
+    .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
+    .contact-card{padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent)}
+    label{display:block;font-size:13px;margin:8px 0 6px;color:var(--muted)}
+    input, textarea{
+      width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);
+      background:transparent;color:inherit;font-size:14px;outline:none;
     }
     textarea{min-height:120px;resize:vertical}
+    .small-muted{font-size:13px;color:var(--muted)}
 
-    footer{padding:28px;text-align:center;color:var(--muted);margin-top:40px;}
+    /* Modal */
+    .modal{
+      position:fixed;inset:0;display:none;place-items:center;background:linear-gradient(180deg, rgba(3,6,12,0.6), rgba(3,6,12,0.85));z-index:80;
+    }
+    .modal.show{display:grid}
+    .modal .panel{max-width:880px;width:min(96%,880px);background:var(--card);padding:18px;border-radius:16px;box-shadow:0 22px 60px rgba(2,6,12,0.8)}
+    .modal .panel h3{margin:0 0 10px}
+    .modal .close{margin-left:auto;background:transparent;border:none;color:var(--muted);font-weight:800;font-size:18px}
+
+    /* Footer */
+    footer.sitefoot{padding:28px;text-align:center;color:var(--muted);margin-top:24px}
+
+    /* Responsive */
+    @media (max-width:960px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .hero-right{display:none}
+    }
+    @media (max-width:640px){
+      .nav{padding:8px 10px;top:12px}
+      .menu{display:none}
+      .hero{flex-direction:column;gap:18px;padding-top:80px}
+      .grid{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      header.hero{padding-top:100px}
+      .logo{width:40px;height:40px;font-size:16px}
+    }
+
+    /* small touches */
+    a.icon{opacity:0.9;text-decoration:none}
+    .muted{color:var(--muted)}
   </style>
 </head>
 <body>
 
-  <nav class="nav">
-    <a class="brand" href="#home">
-      <div class="logo">MH</div>
-      <span>Martina Hübler</span>
+  <!-- NAV -->
+  <nav class="nav" role="navigation" aria-label="Main">
+    <a class="brand" href="#home" aria-label="Inicio">
+      <div class="logo">TN</div>
+      <span>Tu Nombre</span>
     </a>
-    <div class="menu">
+
+    <div class="menu" role="menubar" aria-label="Secciones">
       <a href="#home">Inicio</a>
       <a href="#about">Sobre mí</a>
       <a href="#projects">Proyectos</a>
       <a href="#skills">Habilidades</a>
+      <a href="#experience">Experiencia</a>
       <a href="#contact">Contacto</a>
     </div>
   </nav>
 
+  <!-- HERO -->
   <header class="hero" id="home">
     <div class="hero-left">
-      <h1>Hola — soy Martina Hübler</h1>
-      <p class="lead">Desarrolladora front-end apasionada por crear experiencias digitales limpias y funcionales.</p>
-      <a class="btn" href="#projects">Ver proyectos</a>
-      <a class="btn secondary" href="#contact">Contactar</a>
+      <div class="eyebadge">Diseñador &middot; Desarrollador</div>
+      <h1>Hola — soy <span style="background:transparent;color:inherit">Tu Nombre</span></h1>
+      <p class="lead">Construyo experiencias digitales limpias y elegantes. Me enfoco en front-end, interfaces accesibles y productos que comunican con intención.</p>
+      <div class="cta-row">
+        <a class="btn" href="#projects">Ver proyectos</a>
+        <a class="btn secondary" href="#contact">Contactar</a>
+      </div>
+      <div style="margin-top:18px;color:var(--muted);font-size:13px">Disponible para trabajo freelance / remoto</div>
     </div>
-    <aside class="hero-right">
-      <h3>Contacto rápido</h3>
-      <p><a href="mailto:martihubler@gmail.com" style="color:var(--accent)">martihubler@gmail.com</a></p>
-      <p><a href="https://github.com/martihubler" target="_blank" style="color:var(--accent)">GitHub</a></p>
-      <p><a href="https://linkedin.com/in/martihubler" target="_blank" style="color:var(--accent)">LinkedIn</a></p>
+
+    <aside class="hero-right" aria-hidden="true">
+      <div class="profile">
+        <div class="avatar">TN</div>
+        <div class="meta">
+          <h3>Tu Nombre</h3>
+          <p>Front-end & UI • Buenos Aires</p>
+        </div>
+      </div>
+      <div class="small-muted">Contacto rápido</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">
+        <a class="pill" href="mailto:tu@correo.com">tu@correo.com</a>
+        <a class="pill" href="https://github.com/tuusuario" target="_blank">github.com/tuusuario</a>
+        <a class="pill" href="https://linkedin.com/in/tuusuario" target="_blank">linkedin</a>
+      </div>
+      <div style="margin-top:12px;font-size:13px;color:var(--muted)">Breve bio: creativo con experiencia en interfaces web y accesibilidad.</div>
     </aside>
   </header>
 
   <main>
+    <!-- ABOUT -->
     <section id="about" class="block">
-      <div class="headline"><h2>Sobre mí</h2></div>
-      <p>Soy desarrolladora front-end con experiencia en interfaces modernas y diseño accesible. Me interesa unir lo estético con lo funcional.</p>
+      <div class="headline">
+        <h2>Sobre mí</h2>
+        <p class="small muted">Breve presentación</p>
+      </div>
+      <div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:14px">
+        <div style="flex:1;min-width:260px">
+          <p class="muted">Soy desarrollador front-end con X años de experiencia. Me gusta transformar ideas en interfaces limpias y usables. Trabajo especialmente con HTML, CSS y JavaScript, y me interesa la experiencia del usuario y la accesibilidad.</p>
+          <p style="margin-top:10px" class="muted">Actualmente: <strong>Buscando colaborar en proyectos web y UI</strong>.</p>
+        </div>
+        <div style="min-width:260px;max-width:380px">
+          <div class="card" style="padding:14px">
+            <h3>Datos rápidos</h3>
+            <p class="muted" style="margin:6px 0">📍 Buenos Aires · 🇦🇷</p>
+            <p class="muted" style="margin:6px 0">🕒 Disponible: tiempo parcial / freelance</p>
+            <p style="margin-top:10px"><a class="btn" href="#contact">Contactame</a></p>
+          </div>
+        </div>
+      </div>
     </section>
 
+    <!-- PROJECTS -->
     <section id="projects" class="block">
-      <div class="headline"><h2>Proyectos</h2></div>
-      <div class="grid">
-        <div class="card">
-          <h3>Proyecto 1</h3>
-          <p>Landing interactiva · HTML · CSS · JS</p>
-        </div>
-        <div class="card">
-          <h3>Proyecto 2</h3>
-          <p>Aplicación SPA · React</p>
-        </div>
+      <div class="headline">
+        <h2>Proyectos</h2>
+        <p class="small muted">Algunos trabajos destacados</p>
+      </div>
+
+      <div class="grid" style="margin-top:16px">
+        <!-- Project 1 -->
+        <article class="card" data-project='{"title":"Proyecto Uno","desc":"Descripción corta del proyecto uno. Tecnologías: HTML, CSS, JS.","details":"Más detalle: objetivos, rol y captura."}'>
+          <div style="height:140px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#071018">Preview</div>
+          <h3>Proyecto Uno</h3>
+          <p class="muted">Landing interactiva · UI · Animaciones</p>
+          <div style="margin-top:12px;display:flex;gap:8px">
+            <button class="pill" onclick="openProject(this)">Ver</button>
+            <a class="pill" href="#" target="_blank">Código</a>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="card" data-project='{"title":"Proyecto Dos","desc":"App web responsive con SPA ligera.","details":"Detalles del proyecto dos, colaboración y tecnologías usadas."}'>
+          <div style="height:140px;border-radius:8px;background:linear-gradient(135deg,#22303a,#314a55);display:flex;align-items:center;justify-content:center;color:var(--muted)">Mockup</div>
+          <h3>Proyecto Dos</h3>
+          <p class="muted">Dashboard · Componentes reutilizables</p>
+          <div style="margin-top:12px;display:flex;gap:8px">
+            <button class="pill" onclick="openProject(this)">Ver</button>
+            <a class="pill" href="#" target="_blank">Demo</a>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="card" data-project='{"title":"Proyecto Tres","desc":"Portfolio estático con deploy en GitHub Pages.","details":"Detalles del despliegue y retos técnicos."}'>
+          <div style="height:140px;border-radius:8px;background:linear-gradient(135deg,#1d1f26,#2b2f41);display:flex;align-items:center;justify-content:center;color:var(--muted)">Img</div>
+          <h3>Proyecto Tres</h3>
+          <p class="muted">Static site · GitHub Pages</p>
+          <div style="margin-top:12px;display:flex;gap:8px">
+            <button class="pill" onclick="openProject(this)">Ver</button>
+            <a class="pill" href="#" target="_blank">Código</a>
+          </div>
+        </article>
       </div>
     </section>
 
+    <!-- SKILLS -->
     <section id="skills" class="block">
-      <div class="headline"><h2>Habilidades</h2></div>
-      <div class="skills">
-        <span class="pill">HTML</span>
-        <span class="pill">CSS</span>
-        <span class="pill">JavaScript</span>
-        <span class="pill">React</span>
-        <span class="pill">Git</span>
-        <span class="pill">Figma</span>
+      <div class="headline">
+        <h2>Habilidades</h2>
+        <p class="small muted">Tecnologías y herramientas</p>
+      </div>
+      <div style="margin-top:12px">
+        <div class="skills">
+          <span class="pill">HTML</span>
+          <span class="pill">CSS</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">React</span>
+          <span class="pill">Git</span>
+          <span class="pill">Figma</span>
+          <span class="pill">Accesibilidad</span>
+        </div>
+
+        <div style="margin-top:16px">
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <div style="flex:1;min-width:200px">
+              <div class="small-muted">Front-end</div>
+              <div style="height:10px;background:rgba(255,255,255,0.04);border-radius:10px;margin-top:6px;overflow:hidden">
+                <div style="width:86%;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2))"></div>
+              </div>
+            </div>
+            <div style="flex:1;min-width:200px">
+              <div class="small-muted">UX / UI</div>
+              <div style="height:10px;background:rgba(255,255,255,0.04);border-radius:10px;margin-top:6px;overflow:hidden">
+                <div style="width:78%;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2))"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="contact" class="block">
-      <div class="headline"><h2>Contacto</h2></div>
-      <form>
-        <label>Nombre</label>
-        <input type="text" placeholder="Tu nombre">
-        <label>Email</label>
-        <input type="email" placeholder="tuemail@gmail.com">
-        <label>Mensaje</label>
-        <textarea placeholder="Tu mensaje..."></textarea>
-        <div style="margin-top:12px">
-          <button class="btn" type="submit">Enviar</button>
+    <!-- EXPERIENCE -->
+    <section id="experience" class="block">
+      <div class="headline">
+        <h2>Experiencia</h2>
+        <p class="small muted">Roles y proyectos profesionales</p>
+      </div>
+      <div class="timeline" style="margin-top:12px">
+        <div class="item card">
+          <h4>Frontend Developer — Empresa X</h4>
+          <small class="muted">2022 — Presente · Buenos Aires</small>
+          <p class="muted" style="margin-top:8px">Responsable del desarrollo de interfaces, mantenimiento de componentes y optimización de rendimiento.</p>
         </div>
-      </form>
+        <div class="item card">
+          <h4>Diseñador UI — Estudio Y</h4>
+          <small class="muted">2020 — 2022</small>
+          <p class="muted" style="margin-top:8px">Diseño de prototipos y sistemas de diseño, colaboración con equipos de producto.</p>
+        </div>
+      </div>
     </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="block">
+      <div class="headline">
+        <h2>Contacto</h2>
+        <p class="small muted">Hablemos — disponible para proyectos</p>
+      </div>
+      <div style="margin-top:12px" class="contact-grid">
+        <div class="contact-card">
+          <form id="contactForm">
+            <label for="name">Nombre</label>
+            <input id="name" name="name" type="text" placeholder="Tu nombre" required>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="tu@correo.com" required>
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" placeholder="Escribí tu propuesta..." required></textarea>
+            <div style="display:flex;gap:10px;margin-top:12px">
+              <button type="submit" class="btn">Enviar</button>
+              <button type="button" class="btn secondary" onclick="clearForm()">Limpiar</button>
+            </div>
+            <p id="formMsg" class="small-muted" style="margin-top:10px"></p>
+          </form>
+        </div>
+
+        <aside style="padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent)">
+          <h3 style="margin-top:0">Otras formas</h3>
+          <p class="muted">Email directo: <a class="muted" href="mailto:tu@correo.com">tu@correo.com</a></p>
+          <p class="muted">GitHub: <a class="muted" href="https://github.com/tuusuario" target="_blank">github.com/tuusuario</a></p>
+          <p class="muted">LinkedIn: <a class="muted" href="https://linkedin.com/in/tuusuario" target="_blank">linkedin.com/in/tuusuario</a></p>
+        </aside>
+      </div>
+    </section>
+
+    <footer class="sitefoot">
+      © <span id="year"></span> Tu Nombre · Hecho con atención al detalle · <span class="muted">Disponible para colaborar</span>
+    </footer>
   </main>
 
-  <footer>© <span id="year"></span> Martina Hübler — </footer>
+  <!-- Modal -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="panel" role="document">
+      <div style="display:flex;gap:12px;align-items:center">
+        <h3 id="modalTitle">Proyecto</h3>
+        <button class="close" aria-label="Cerrar" onclick="closeModal()">✕</button>
+      </div>
+      <p id="modalDesc" class="muted" style="margin-top:8px"></p>
+      <div style="margin-top:12px" id="modalDetails"></div>
+    </div>
+  </div>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+    // Small helpers
+    document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Open project modal
+    function openProject(btn){
+      const card = btn.closest('.card');
+      if(!card) return;
+      const data = JSON.parse(card.getAttribute('data-project') || '{}');
+      document.getElementById('modalTitle').textContent = data.title || 'Proyecto';
+      document.getElementById('modalDesc').textContent = data.desc || '';
+      document.getElementById('modalDetails').textContent = data.details || '';
+      const modal = document.getElementById('modal');
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(){
+      const modal = document.getElementById('modal');
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('modal').addEventListener('click', (e)=>{
+      if(e.target === e.currentTarget) closeModal();
+    });
+
+    // Contact form handler — uses mailto: fallback
+    const form = document.getElementById('contactForm');
+    const formMsg = document.getElementById('formMsg');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if(!name || !email || !message){
+        formMsg.textContent = 'Completá todos los campos.';
+        return;
+      }
+      // Crear mailto como fallback (sencillo y sin backend)
+      const subject = encodeURIComponent('Contacto desde portafolio — ' + name);
+      const body = encodeURIComponent(`Nombre: ${name}\nEmail: ${email}\n\n${message}`);
+      const mailto = `mailto:tu@correo.com?subject=${subject}&body=${body}`;
+      // Intentar abrir cliente de correo
+      window.location.href = mailto;
+      formMsg.textContent = 'Abriendo cliente de correo...';
+    });
+
+    function clearForm(){
+      form.reset();
+      formMsg.textContent = '';
+    }
+
+    // Small accessibility: keyboard close for modal
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape') closeModal();
+    });
+
+    // Smooth reveal animations (simple, no libs)
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.style.transition = 'opacity .8s ease, transform .8s cubic-bezier(.2,.9,.3,1)';
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12});
+
+    document.querySelectorAll('section.block, .card').forEach(el=>{
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(18px)';
+      observer.observe(el);
+    });
+  </script>
 </body>
 </html>
