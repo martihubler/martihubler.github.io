@@ -206,24 +206,37 @@
       border-top-left-radius:12px;border-top-right-radius:12px;
     }
 
-    /* Responsive */
-    @media (max-width:960px){
-      .grid{grid-template-columns:repeat(2,1fr)}
-      .hero-right{display:none}
-    }
-    @media (max-width:640px){
-      .nav{padding:8px 10px;top:12px}
-      .menu{display:none}
-      .hero{flex-direction:column;gap:18px;padding-top:80px}
-      .grid{grid-template-columns:1fr}
-      .contact-grid{grid-template-columns:1fr}
-      header.hero{padding-top:100px}
-      .logo{width:40px;height:40px;font-size:16px}
-    }
-
     /* small touches */
     a.icon{opacity:0.9;text-decoration:none}
     .muted{color:var(--muted)}
+
+    /*
+      Reglas específicas solicitadas: forzar color blanco en ciertos textos
+      sin modificar estructura HTML. Aplica únicamente a los textos
+      listados por el usuario dentro de cada sección.
+    */
+    /* Sobre mí: párrafos descriptivos (hacerlos blancos) */
+    #about .muted { color: var(--fg-on-blue) !important; }
+
+    /* Titulares/pequeños textos de sección en Proyectos, Habilidades, Experiencia, Contacto */
+    #projects .headline p.small,
+    #skills .headline p.small,
+    #experience .headline p.small,
+    #contact .headline p.small { color: var(--fg-on-blue) !important; }
+
+    /* Pequeñas etiquetas en Habilidades (Front-end / UX) */
+    #skills .small-muted { color: var(--fg-on-blue) !important; }
+
+    /* Headline text color (asegurar h2 y p.small en secciones se vean blancos cuando sea necesario) */
+    #about .headline p.small { color: var(--fg-on-blue) !important; }
+    #projects .headline h2,
+    #skills .headline h2,
+    #experience .headline h2,
+    #contact .headline h2 { color: var(--fg-on-blue) !important; }
+
+    /* Footer: hacer el span .muted del footer blanco */
+    footer .muted { color: var(--fg-on-blue) !important; }
+
   </style>
 </head>
 <body>
@@ -231,8 +244,8 @@
   <!-- NAV -->
   <nav class="nav" role="navigation" aria-label="Main">
     <a class="brand" href="#home" aria-label="Inicio">
-      <div class="logo">TN</div>
-      <span>Tu Nombre</span>
+      <div class="logo">MH</div>
+      <span>Martina Hübler</span>
     </a>
 
     <div class="menu" role="menubar" aria-label="Secciones">
@@ -248,8 +261,8 @@
   <!-- HERO -->
   <header class="hero" id="home">
     <div class="hero-left">
-      <div class="eyebadge">Diseñador &middot; Desarrollador</div>
-      <h1>Hola — soy <span style="background:transparent;color:inherit">Tu Nombre</span></h1>
+      <div class="eyebadge">Desarrolladora</div>
+      <h1>Hola — soy <span style="background:transparent;color:inherit">Martina Hübler</span></h1>
       <p class="lead">Construyo experiencias digitales limpias y elegantes. Me enfoco en front-end, interfaces accesibles y productos que comunican con intención.</p>
       <div class="cta-row">
         <a class="btn" href="#projects">Ver proyectos</a>
@@ -260,7 +273,7 @@
 
     <aside class="hero-right" aria-hidden="true">
       <div class="profile">
-        <div class="avatar">TN</div>
+        <div class="avatar">MH</div>
         <div class="meta">
           <h3>Martina Hübler</h3>
           <p>Front-end & UI • Buenos Aires</p>
