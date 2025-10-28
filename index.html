@@ -11,24 +11,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#8e9dad;           /* fondo general */
-      --card:#828f9e;         /* tarjetas / secciones */
-      --muted:#e6ebf0;        /* texto secundario */
-      --accent:#caa8ff;       /* color acento (lila/dorado suave) */
-      --accent-2:#8871ad;     /* acento secundario (azul) */
-      --glass: rgba(255,255,255,0.03);
+      /* Nueva paleta: blancos + gama de azules oscuros */
+      --bg: #ffffff;               /* fondo general: blanco */
+      --card: #07263f;             /* tarjetas / secciones: azul oscuro */
+      --muted: #071018;            /* texto secundario en zonas claras: casi negro */
+      --accent: #1f6feb;           /* color acento (azul vibrante) */
+      --accent-2: #0b3a66;         /* acento secundario (azul profundo) */
+      --glass: rgba(11,58,102,0.06);/* vidrio sutil en azul */
       --radius:14px;
       --maxw:1100px;
+
+      /* Foreground defaults for contexts */
+      --fg-on-blue: #ffffff;       /* texto sobre fondos azules -> blanco */
+      --fg-default: #071018;       /* texto en fondos claros -> negro/azulado muy oscuro */
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
       font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(122,84,255,0.06), transparent 6%),
-                  radial-gradient(1000px 500px at 90% 90%, rgba(91,214,255,0.03), transparent 6%),
+      /* fondos con ligeros degradados azules sobre blanco para dar profundidad */
+      background: radial-gradient(900px 420px at 8% 8%, rgba(31,111,235,0.03), transparent 6%),
+                  radial-gradient(700px 340px at 92% 92%, rgba(11,58,102,0.02), transparent 6%),
                   var(--bg);
-      color:#e6eef6;
+      color: var(--fg-default);
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       line-height:1.4;
@@ -48,31 +55,27 @@
       align-items:center;
       gap:12px;
       padding:10px 14px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      /* sutil glass en azul */
+      background: linear-gradient(180deg, rgba(11,58,102,0.04), rgba(11,58,102,0.02));
       border-radius:999px;
       backdrop-filter: blur(6px);
-      box-shadow: 0 6px 18px rgba(3,6,12,0.4);
+      box-shadow: 0 6px 18px rgba(3,6,12,0.06);
     }
-    .brand{
-      display:flex;align-items:center;gap:12px;
-      text-decoration:none;color:inherit;
-    }
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;}
     .logo {
       width:44px;height:44px;border-radius:10px;
       background:linear-gradient(135deg,var(--accent),var(--accent-2));
       display:grid;place-items:center;font-weight:800;
-      color:#071018;font-size:18px;
-      box-shadow: 0 6px 22px rgba(78,56,131,0.25), inset 0 -6px 16px rgba(255,255,255,0.04);
+      color:var(--fg-on-blue);font-size:18px;
+      box-shadow: 0 6px 22px rgba(11,58,102,0.12), inset 0 -6px 16px rgba(255,255,255,0.04);
     }
     .brand span{font-weight:700;letter-spacing:0.2px}
 
-    .menu{
-      display:flex;gap:12px;align-items:center;
-    }
+    .menu{display:flex;gap:12px;align-items:center;}
     .menu a{
       text-decoration:none;color:var(--muted);padding:8px 12px;border-radius:10px;font-weight:600;font-size:14px;
     }
-    .menu a:hover{color:#fff;background:var(--glass)}
+    .menu a:hover{color:var(--fg-on-blue);background:var(--glass)}
 
     /* Hero */
     header.hero{
@@ -82,77 +85,103 @@
     }
     .hero-left{flex:1;min-width:260px}
     .eyebadge{
-      display:inline-flex;align-items:center;gap:10px;background:linear-gradient(90deg,rgba(255,255,255,0.03),transparent);
+      display:inline-flex;align-items:center;gap:10px;background:linear-gradient(90deg,rgba(11,58,102,0.06),transparent);
       padding:8px 12px;border-radius:999px;font-weight:600;color:var(--muted);font-size:13px;width:max-content;
-      box-shadow: 0 6px 18px rgba(2,4,8,0.4);
+      box-shadow: 0 6px 18px rgba(2,4,8,0.03);
     }
     h1{
       margin:18px 0 8px;font-size:clamp(28px,5vw,44px);line-height:1.03;
       letter-spacing:-0.4px;
-      background:linear-gradient(90deg,#fff, #d6e4ff 60%); -webkit-background-clip:text; background-clip:text; color:transparent;
+      /* texto en azul oscuro con efecto gradient clipping para un resultado legible sobre fondo blanco */
+      background:linear-gradient(90deg,#071018, #0b3a66 60%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
     }
     p.lead{color:var(--muted);font-size:15px;margin:0 0 18px;max-width:52ch}
 
     .cta-row{display:flex;gap:12px;flex-wrap:wrap}
     .btn{
       display:inline-flex;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;
-      background:linear-gradient(180deg,var(--accent), #8f73ff);color:#828f9e;font-weight:700;text-decoration:none;
-      box-shadow: 0 10px 24px rgba(115,83,255,0.12), inset 0 -6px 14px rgba(255,255,255,0.06);
+      /* botones con fondo azul, texto blanco */
+      background:linear-gradient(180deg,var(--accent), var(--accent-2));
+      color:var(--fg-on-blue);font-weight:700;text-decoration:none;
+      box-shadow: 0 10px 24px rgba(11,58,102,0.12), inset 0 -6px 14px rgba(255,255,255,0.06);
     }
     .btn.secondary{
-      background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.04);font-weight:600;
+      background:transparent;color:var(--muted);border:1px solid rgba(11,58,102,0.06);font-weight:600;
     }
 
     .hero-right{
       width:360px;max-width:44%;
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:20px;padding:18px;box-shadow: 0 10px 40px rgba(3,6,12,0.4);
+      /* panel derecho ligeramente azul oscuro para destacar; texto blanco */
+      background:linear-gradient(180deg, rgba(7,38,63,0.96), rgba(11,58,102,0.94));
+      border-radius:20px;padding:18px;box-shadow: 0 10px 40px rgba(3,6,12,0.06);
       display:flex;flex-direction:column;gap:12px;
+      color: var(--fg-on-blue);
     }
-    .profile{
-      display:flex;gap:12px;align-items:center;
-    }
+    .profile{display:flex;gap:12px;align-items:center;}
     .avatar{
       width:72px;height:72px;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      display:grid;place-items:center;font-weight:800;color:#828f9e;font-size:20px;
+      display:grid;place-items:center;font-weight:800;color:var(--fg-on-blue);font-size:20px;
     }
     .meta{flex:1;text-align:left}
     .meta h3{margin:0;font-size:16px}
-    .meta p{margin:2px 0 0;color:var(--muted);font-size:13px}
+    .meta p{margin:2px 0 0;color:var(--fg-on-blue);font-size:13px}
 
     /* Sections */
     main{max-width:var(--maxw);margin:40px auto;padding:0 20px 80px;display:block}
-    section.block{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:28px;border-radius:var(--radius);margin:20px 0}
+    section.block{
+      /* tarjetas de sección en azul oscuro con texto blanco, salvo cuando se quiere fondo claro */
+      background: linear-gradient(180deg, rgba(7,38,63,0.95), rgba(7,38,63,0.94));
+      padding:28px;border-radius:var(--radius);margin:20px 0;
+      color: var(--fg-on-blue);
+    }
+    /* Para los encabezados de sección mantendremos un estilo claro donde el h2 sea azul oscuro sobre fondo blanco.
+       Sin embargo, las secciones en su conjunto están en azul (como se definió arriba), por eso el headline se presenta
+       usando un fondo transparente para que el h2 destaque en color claro cuando la sección sea azul. */
     section.headline{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    section.headline h2{margin:0;font-size:20px}
-    section.headline p.small{margin:0;color:var(--muted);font-size:13px}
+    section.headline h2{margin:0;font-size:20px;color:var(--fg-on-blue)}
+    section.headline p.small{margin:0;color:rgba(255,255,255,0.86);font-size:13px}
 
     /* Projects grid */
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
     .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.006));
-      padding:14px;border-radius:12px;box-shadow: 0 8px 24px rgba(2,6,12,0.4);
+      /* muchas cards usan gradientes oscuros; texto en blanco para garantizar legibilidad */
+      background:linear-gradient(180deg, rgba(11,58,102,0.98), rgba(7,38,63,0.96));
+      padding:14px;border-radius:12px;box-shadow: 0 8px 24px rgba(2,6,12,0.04);
       transition:transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
+      color: var(--fg-on-blue);
     }
-    .card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,6,12,0.6)}
+    .card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,6,12,0.06)}
     .card h3{margin:8px 0 6px;font-size:16px}
-    .card p{margin:0;color:var(--muted);font-size:13px}
+    .card p{margin:0;color:rgba(255,255,255,0.86);font-size:13px}
 
     .skills{display:flex;flex-wrap:wrap;gap:8px}
-    .pill{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,0.02);font-weight:600;color:var(--muted);font-size:13px}
+    .pill{
+      padding:8px 10px;border-radius:999px;background:linear-gradient(180deg, rgba(11,58,102,0.9), rgba(7,38,63,0.9));font-weight:600;color:var(--fg-on-blue);font-size:13px;
+    }
 
     /* Experience */
     .timeline{display:flex;flex-direction:column;gap:12px}
-    .timeline .item{padding:12px;border-radius:12px;background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02)}
+    .timeline .item{
+      padding:12px;border-radius:12px;
+      background: linear-gradient(180deg, var(--card), rgba(7,38,63,0.96));
+      border:1px solid rgba(255,255,255,0.02);
+      color:var(--fg-on-blue);
+    }
     .timeline .item h4{margin:0 0 6px}
-    .timeline .item small{color:var(--muted)}
+    .timeline .item small{color:rgba(255,255,255,0.86)}
 
     /* Contact */
     .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
-    .contact-card{padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent)}
+    .contact-card{
+      padding:16px;border-radius:12px;
+      /* aquí el formulario quedará con fondo blanco para contraste y texto negro */
+      background: linear-gradient(180deg, #ffffff, #ffffff);
+      color: var(--fg-default);
+    }
     label{display:block;font-size:13px;margin:8px 0 6px;color:var(--muted)}
     input, textarea{
-      width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);
+      width:100%;padding:10px;border-radius:10px;border:1px solid rgba(11,58,102,0.08);
       background:transparent;color:inherit;font-size:14px;outline:none;
     }
     textarea{min-height:120px;resize:vertical}
@@ -163,12 +192,19 @@
       position:fixed;inset:0;display:none;place-items:center;background:linear-gradient(180deg, rgba(3,6,12,0.6), rgba(3,6,12,0.85));z-index:80;
     }
     .modal.show{display:grid}
-    .modal .panel{max-width:880px;width:min(96%,880px);background:var(--card);padding:18px;border-radius:16px;box-shadow:0 22px 60px rgba(2,6,12,0.8)}
+    .modal .panel{
+      max-width:880px;width:min(96%,880px);background:var(--card);padding:18px;border-radius:16px;box-shadow:0 22px 60px rgba(2,6,12,0.08);
+      color:var(--fg-on-blue);
+    }
     .modal .panel h3{margin:0 0 10px}
-    .modal .close{margin-left:auto;background:transparent;border:none;color:var(--muted);font-weight:800;font-size:18px}
+    .modal .close{margin-left:auto;background:transparent;border:none;color:var(--fg-on-blue);font-weight:800;font-size:18px}
 
     /* Footer */
-    footer.sitefoot{padding:28px;text-align:center;color:var(--muted);margin-top:24px}
+    footer.sitefoot{
+      padding:28px;text-align:center;color:rgba(255,255,255,0.9);margin-top:24px;
+      background: linear-gradient(180deg, rgba(7,38,63,0.98), rgba(11,58,102,0.98));
+      border-top-left-radius:12px;border-top-right-radius:12px;
+    }
 
     /* Responsive */
     @media (max-width:960px){
@@ -236,7 +272,7 @@
         <a class="pill" href="https://github.com/martihubler" target="_blank">github.com/martihubler</a>
         <a class="pill" href="https://linkedin.com/in/martinahubler" target="_blank">linkedin</a>
       </div>
-      <div style="margin-top:12px;font-size:13px;color:var(--muted)">Breve bio: creativa con experiencia en interfaces web y accesibilidad.</div>
+      <div style="margin-top:12px;font-size:13px;color:var(--fg-on-blue)">Breve bio: creativa con experiencia en interfaces web y accesibilidad.</div>
     </aside>
   </header>
 
@@ -273,7 +309,7 @@
       <div class="grid" style="margin-top:16px">
         <!-- Project 1 -->
         <article class="card" data-project='{"title":"Proyecto Uno","desc":"Descripción corta del proyecto uno. Tecnologías: HTML, CSS, JS.","details":"Más detalle: objetivos, rol y captura."}'>
-          <div style="height:140px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#071018">Preview</div>
+          <div style="height:140px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--fg-on-blue)">Preview</div>
           <h3>Proyecto Uno</h3>
           <p class="muted">Landing interactiva · UI · Animaciones</p>
           <div style="margin-top:12px;display:flex;gap:8px">
@@ -284,7 +320,7 @@
 
         <!-- Project 2 -->
         <article class="card" data-project='{"title":"Proyecto Dos","desc":"App web responsive con SPA ligera.","details":"Detalles del proyecto dos, colaboración y tecnologías usadas."}'>
-          <div style="height:140px;border-radius:8px;background:linear-gradient(135deg,#22303a,#314a55);display:flex;align-items:center;justify-content:center;color:var(--muted)">Mockup</div>
+          <div style="height:140px;border-radius:8px;background:linear-gradient(135deg,#22303a,#314a55);display:flex;align-items:center;justify-content:center;color:var(--fg-on-blue)">Mockup</div>
           <h3>Proyecto Dos</h3>
           <p class="muted">Dashboard · Componentes reutilizables</p>
           <div style="margin-top:12px;display:flex;gap:8px">
@@ -295,7 +331,7 @@
 
         <!-- Project 3 -->
         <article class="card" data-project='{"title":"Proyecto Tres","desc":"Portfolio estático con deploy en GitHub Pages.","details":"Detalles del despliegue y retos técnicos."}'>
-          <div style="height:140px;border-radius:8px;background:linear-gradient(135deg,#1d1f26,#2b2f41);display:flex;align-items:center;justify-content:center;color:var(--muted)">Img</div>
+          <div style="height:140px;border-radius:8px;background:linear-gradient(135deg,#1d1f26,#2b2f41);display:flex;align-items:center;justify-content:center;color:var(--fg-on-blue)">Img</div>
           <h3>Proyecto Tres</h3>
           <p class="muted">Static site · GitHub Pages</p>
           <div style="margin-top:12px;display:flex;gap:8px">
@@ -327,13 +363,13 @@
           <div style="display:flex;gap:12px;flex-wrap:wrap">
             <div style="flex:1;min-width:200px">
               <div class="small-muted">Front-end</div>
-              <div style="height:10px;background:rgba(255,255,255,0.04);border-radius:10px;margin-top:6px;overflow:hidden">
+              <div style="height:10px;background:rgba(255,255,255,0.06);border-radius:10px;margin-top:6px;overflow:hidden">
                 <div style="width:86%;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2))"></div>
               </div>
             </div>
             <div style="flex:1;min-width:200px">
               <div class="small-muted">UX / UI</div>
-              <div style="height:10px;background:rgba(255,255,255,0.04);border-radius:10px;margin-top:6px;overflow:hidden">
+              <div style="height:10px;background:rgba(255,255,255,0.06);border-radius:10px;margin-top:6px;overflow:hidden">
                 <div style="width:78%;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2))"></div>
               </div>
             </div>
@@ -385,11 +421,11 @@
           </form>
         </div>
 
-        <aside style="padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent)">
-          <h3 style="margin-top:0">Otras formas</h3>
-          <p class="muted">Email directo: <a class="muted" href="mailto:martihubler@gmail.com">martihubler@gmail.com</a></p>
-          <p class="muted">GitHub: <a class="muted" href="https://github.com/martihubler" target="_blank">github.com/martihubler</a></p>
-          <p class="muted">LinkedIn: <a class="muted" href="https://linkedin.com/in/martinahubler" target="_blank">linkedin.com/in/martinahubler</a></p>
+        <aside style="padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(11,58,102,0.96), rgba(7,38,63,0.96))">
+          <h3 style="margin-top:0;color:var(--fg-on-blue)">Otras formas</h3>
+          <p class="muted" style="color:var(--fg-on-blue)">Email directo: <a class="muted" href="mailto:martihubler@gmail.com" style="color:var(--fg-on-blue)">martihubler@gmail.com</a></p>
+          <p class="muted" style="color:var(--fg-on-blue)">GitHub: <a class="muted" href="https://github.com/martihubler" target="_blank" style="color:var(--fg-on-blue)">github.com/martihubler</a></p>
+          <p class="muted" style="color:var(--fg-on-blue)">LinkedIn: <a class="muted" href="https://linkedin.com/in/martinahubler" target="_blank" style="color:var(--fg-on-blue)">linkedin.com/in/martinahubler</a></p>
         </aside>
       </div>
     </section>
