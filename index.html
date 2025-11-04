@@ -251,8 +251,105 @@
         color: #ffffff !important;
         font-weight: 600;
     }
+  /* ======== VERSIÓN MÓVIL + HAMBURGER MENU ======== */
+  @media (max-width: 768px) {
 
-  </style>
+  /* NAV */
+  .nav{
+      justify-content: space-between;
+      flex-direction: row;
+      padding: 10px;
+  }
+
+  /* botón hamburguesa visible en móvil */
+  .burger{
+    display:block;
+    font-size:24px;
+    background:none;
+    border:none;
+    color:var(--muted);
+    cursor:pointer;
+  }
+
+  /* menú oculto inicialmente */
+  .menu{
+    display:none;
+    flex-direction:column;
+    width:100%;
+    gap:8px;
+    padding:10px;
+    background:rgba(7,38,63,0.96);
+    border-radius:12px;
+    position:absolute;
+    top:64px;
+    left:50%;
+    transform:translateX(-50%);
+    box-shadow:0 12px 32px rgba(0,0,0,0.15);
+  }
+
+  /* cuando el menú está abierto */
+  .menu.show{
+    display:flex;
+  }
+
+  /* HERO: texto arriba, foto abajo */
+  header.hero{
+    flex-direction: column;
+    text-align: center;
+    padding: 100px 16px 40px;
+  }
+
+  .hero-right{
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .hero-left{
+    width: 100%;
+  }
+
+  /* TITULOS */
+  h1{
+    font-size: 32px;
+  }
+
+  /* PROYECTOS: 1 por fila */
+  .grid{
+    grid-template-columns: 1fr;
+  }
+
+  /* CONTACTO: formulario y otras formas en columna */
+  .contact-grid{
+    grid-template-columns: 1fr;
+  }
+
+  /* CARDS y SECCIONES con menos padding */
+  section.block{
+    padding: 20px;
+  }
+
+  /* marca más chica */
+  .brand span{
+    font-size:14px;
+  }
+}
+
+/* hamburguesa oculta en escritorio */
+.burger{
+  display:none;
+}
+
+/* evita conflictos con menú normal */
+@media (min-width: 769px){
+  .menu{
+    display:flex !important;
+    position:static !important;
+    background:none !important;
+    box-shadow:none !important;
+  }
+}
+
+</style>
 </head>
 <body>
 
@@ -273,6 +370,10 @@
       <a href="#experience">Experiencia</a>
       <a href="#contact">Contacto</a>
     </div>
+
+    <button class="burger" onclick="toggleMenu()" aria-label="Menú">
+        ☰
+    </button>
   </nav>
 
   <!-- HERO -->
@@ -559,6 +660,12 @@
       el.style.transform = 'translateY(18px)';
       observer.observe(el);
     });
+    
+    function toggleMenu(){
+      const menu = document.querySelector('.menu');
+      menu.classList.toggle('show');
+    }
+
   </script>
 </body>
 </html>
